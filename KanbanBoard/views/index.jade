@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	div.container
+		div.jumbotron
+			h1 MY KANBAN BOARD
+			p Welcome!! This is my Kanban Board which let me do myjob better!!
+			p if you want to create now task, just push this button!!
+			a.btn.btn-primary.mtn-lg Add Task
+
+	div.row
+		div.col-lg-4
+		h2 TO-DO
+		ul.list-group
+			each val in todoTasks
+				li.list-group-item= val
+	div.col-lg-4
+		h2 In-Progress
+		ul.list-group
+			each val in inProgressTasks
+				li.list-group-item= val
+	div.col-lg-4
+		h2 Done
+		ul.list-group
+			each val in doneTasks
+				li.list-group-item= val
