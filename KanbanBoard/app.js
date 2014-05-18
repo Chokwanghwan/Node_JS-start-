@@ -4,9 +4,7 @@
  */
 
 var express = require('express')
-  , controllers = require('./controllers')
-  , routes = require('./routes')
-  , user = require('./routes/user')
+  , controllers = require('./controllers') // controller 사용
   , http = require('http')
   , path = require('path');
 
@@ -28,7 +26,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', controllers.index);
+app.get('/', controllers.index); //localhost 경로에 controllers.index 호
 
 
 http.createServer(app).listen(app.get('port'), function(){
