@@ -1,10 +1,8 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express')
-  , controllers = require('./controllers') // controller 사용
   , http = require('http')
   , path = require('path');
 
@@ -26,7 +24,11 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', controllers.index); //localhost 경로에 controllers.index 호
+// routing setting
+require('./router.js').route(app);
+
+// create connection pool for mongodb
+require('./db.js').connect();
 
 
 http.createServer(app).listen(app.get('port'), function(){

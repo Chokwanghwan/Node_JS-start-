@@ -3,24 +3,45 @@ extends layout
 block content
 	div.container
 		div.jumbotron
-			h1 MY KANBAN BOARD
-			p Welcome!! This is my Kanban Board which let me do myjob better!!
-			p if you want to create now task, just push this button!!
-			a.btn.btn-primary.mtn-lg Add Task
+			h1 칸반보드 
+			p 이 보드는 RUSK의 프로젝트 공유 도구가 될겁니다.
+			p 새로운 task를 만들고 싶으면 버튼을 누르면되요!
+			div.form-group
+				form(action='/createTask', method='post')
+					input(type='text', name='contents' class='form-control')
+					button(type='submit' class='btn btn-success') Task 만들기
 
 		div.row
 			div.col-lg-4
-				h2 TO-DO
 				ul.list-group
+					li.list-group-item.active TO-DO
+						span.badge= todoTasks.length
 					each val in todoTasks
-						li.list-group-item= val
+						div.input-group
+							li.list-group-item= val
+							div.input-group-btn
+								form(action='/updateTask', method='post')
+									input(type='hidden' name='status' value='In-Progress')
+									button(type='submit' class='btn btn-info' name='contents' value= val) <string>></strong>
+					
 			div.col-lg-4
-				h2 In-Progress
 				ul.list-group
+					li.list-group-item.active In-Progress
+						span.badge= inProgressTasks.length
 					each val in inProgressTasks
-						li.list-group-item= val
+						div.input-group
+							li.list-group-item= val
+							div.input-group-btn
+								form(action='/updateTask', method='post')
+									input(type='hidden' name='status' value='Done')
+									button(type='submit' calss='btn btn-info' name='contents' value = val) <strong>></strong>
 			div.col-lg-4
-				h2 Done
 				ul.list-group
+					li.list-group-item.active Done
+						span.badge= doneTasks.length
 					each val in doneTasks
-						li.list-group-item= val
+						div.input-group
+							li.list-group-item= val
+							div.input-group-btn
+								form(action='/removeTask', method='post')
+									button(type='submit' class='btn btn-danger' name='contents' value= val) D		
