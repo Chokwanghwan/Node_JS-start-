@@ -14,7 +14,7 @@ block content
 		div.row
 			div.col-lg-4
 				ul.list-group
-					li.list-group-item.active TO-DO
+					li.list-group-item.active 할거
 						span.badge= todoTasks.length
 					each val in todoTasks
 						div.input-group
@@ -26,7 +26,7 @@ block content
 					
 			div.col-lg-4
 				ul.list-group
-					li.list-group-item.active In-Progress
+					li.list-group-item.active 하고있는거
 						span.badge= inProgressTasks.length
 					each val in inProgressTasks
 						div.input-group
@@ -34,14 +34,14 @@ block content
 							div.input-group-btn
 								form(action='/updateTask', method='post')
 									input(type='hidden' name='status' value='Done')
-									button(type='submit' calss='btn btn-info' name='contents' value = val) <strong>></strong>
+									button(type='submit' class='btn btn-info' name='contents' value= val) <strong>></strong>
 			div.col-lg-4
 				ul.list-group
-					li.list-group-item.active Done
+					li.list-group-item.active 끝낸
 						span.badge= doneTasks.length
 					each val in doneTasks
 						div.input-group
 							li.list-group-item= val
 							div.input-group-btn
 								form(action='/removeTask', method='post')
-									button(type='submit' class='btn btn-danger' name='contents' value= val) D		
+									button(type='submit' class='btn btn-danger' name='contents' value= val) D	
